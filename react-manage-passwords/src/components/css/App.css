@@ -1,0 +1,15 @@
+.Glyphicon {
+  margin-left: 10px;
+}
+
+.GlyphiconDanger {
+  color: red;
+}
+
+.GlyphiconWarning{
+  color: orange;
+}
+
+.GlyphiconOk{
+  color: green;
+}

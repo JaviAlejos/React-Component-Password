@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './css/Demo.css';
-import ManagePasswords from './manage-passwords/ManagePasswords';
+import './Demo.css';
+import ManagePasswords from './components/ManagePasswords';
 
 class Demo extends Component {
   render() {
@@ -10,7 +10,7 @@ class Demo extends Component {
         <p className="App-intro">
           Try it yourself. Introduce a password.
         </p>
-        <ManagePasswords show={true} value="12345678"/>
+        <ManagePasswords show={true}/>
       </div>
     );
   }
