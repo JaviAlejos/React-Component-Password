@@ -10,7 +10,7 @@ class Demo extends Component {
         <p className="App-intro">
           Try it yourself. Introduce a password.
         </p>
-        <ManagePasswords/>
+        <ManagePasswords show={true} value="12345678"/>
       </div>
     );
   }
