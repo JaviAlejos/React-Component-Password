@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import zxcvbn from "zxcvbn";
-import {Glyphicon} from 'react-bootstrap';
+import generator from "generate-password";
+import {Glyphicon,OverlayTrigger,Popover,Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/App.css';
 
@@ -13,11 +14,28 @@ class ManagePasswords extends Component {
       this.state = {password:value};
     else
       this.state = {password:""};
+
+    this.generatePassword=this.generatePassword.bind(this);
+
   }
 
   handlePassChange = (event) => {
     this.setState({ password: event.target.value });
   };
+
+  generatePassword(){
+    const pass=generator.generate();
+  debugger;
+    this.setState({password:pass});
+  }
+
+  popoverGeneratePassword(){
+        return (
+          <Popover id="popover-trigger-hover-focus" title="Generate Password">
+            <span>Do you need a password?</span>
+            <Button bsSize="small" className="StandardComponent" bsStyle="warning" onClick={this.generatePassword}>Generate</Button>
+          </Popover>
+    );}
 
 renderInput(){
   const { show} =this.props;
@@ -29,36 +47,43 @@ renderInput(){
   switch (score) {
     case 0:
     case 1:
-        component= <Glyphicon className="Glyphicon GlyphiconDanger" glyph="glyphicon glyphicon-remove" />; break;
+        component= <Glyphicon className="StandardComponent GlyphiconDanger" glyph="glyphicon glyphicon-remove" />; break;
       case 2:
-        component= <Glyphicon className="Glyphicon GlyphiconWarning" glyph="glyphicon glyphicon-warning-sign"/>; break;
+        component= <Glyphicon className="StandardComponent GlyphiconWarning" glyph="glyphicon glyphicon-warning-sign"/>; break;
       case 3:
       case 4:
-        component= <Glyphicon className="Glyphicon GlyphiconOk" glyph="glyphicon glyphicon-ok" />;break;
+        component= <Glyphicon className="StandardComponent GlyphiconOk" glyph="glyphicon glyphicon-ok" />;break;
     }
 
+    let placeholder=""
+    if(this.state.password)
+      placeholder="";
+    else
+      placeholder="password";
 
     if (!show)
       return (
         <div>
-          <input type="password" placeholder="password" value={this.state.password} onChange={this.handlePassChange}/>
+          <input type="password" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange}/>
           {component}
         </div>
       );
     else
       return (
         <div>
-        <input type="text" placeholder="password" value={this.state.password} onChange={this.handlePassChange}/>
+        <input type="text" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange}/>
         {component}
       </div>
     );
   }
 
-
   render() {
+    const popover=this.popoverGeneratePassword();
     return (
       <div>
-        {this.renderInput()}
+        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+          {this.renderInput()}
+        </OverlayTrigger>
       </div>
     );
   }
