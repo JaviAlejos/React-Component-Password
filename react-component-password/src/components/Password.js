@@ -5,7 +5,7 @@ import {Glyphicon,OverlayTrigger,Popover,Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/App.css';
 
-class ManagePasswords extends Component {
+class Password extends Component {
 
   constructor(props) {
     super(props);
@@ -89,4 +89,4 @@ renderInput(){
   }
 }
 
-export default ManagePasswords;
+export default Password;

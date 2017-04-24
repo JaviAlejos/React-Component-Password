@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './Demo.css';
-import ManagePasswords from './components/ManagePasswords';
+import Password from './components/Password';
 
 class Demo extends Component {
   render() {
     return (
       <div className="App">
-          <h2>Welcome to React-Manage-Passwords</h2>
+          <h2>Welcome to React-Component-Passwords</h2>
         <p className="App-intro">
           Try it yourself. Introduce a password.
         </p>
-        <ManagePasswords show={true}/>
+        <Password show={true}/>
       </div>
     );
   }
