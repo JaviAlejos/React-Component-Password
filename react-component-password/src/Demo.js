@@ -10,7 +10,7 @@ class Demo extends Component {
         <p className="App-intro">
           Try it yourself. Introduce a password.
         </p>
-        <Password show={true}/>
+        <Password show={true} value="12345567" numbers="true" length="10"/>
       </div>
     );
   }

@@ -24,7 +24,13 @@ class Password extends Component {
   };
 
   generatePassword(){
-    const pass=generator.generate();
+    let { length,numbers,symbols,uppercase } =this.props;
+    if (typeof length === 'undefined' || !length)
+      length=10;
+    if (typeof uppercase === 'undefined' || !uppercase)
+      uppercase="true";
+
+    const pass=generator.generate({ length,numbers,symbols,uppercase });
   debugger;
     this.setState({password:pass});
   }
@@ -36,6 +42,7 @@ class Password extends Component {
             <Button bsSize="small" className="StandardComponent" bsStyle="warning" onClick={this.generatePassword}>Generate</Button>
           </Popover>
     );}
+
 
 renderInput(){
   const { show} =this.props;
@@ -49,7 +56,7 @@ renderInput(){
     case 1:
         component= <Glyphicon className="StandardComponent GlyphiconDanger" glyph="glyphicon glyphicon-remove" />; break;
       case 2:
-        component= <Glyphicon className="StandardComponent GlyphiconWarning" glyph="glyphicon glyphicon-warning-sign"/>; break;
+        component= <Glyphicon className="StandardComponent GlyphiconWarning" glyph="glyphicon glyphicon-warning-sign" />; break;
       case 3:
       case 4:
         component= <Glyphicon className="StandardComponent GlyphiconOk" glyph="glyphicon glyphicon-ok" />;break;
@@ -65,7 +72,7 @@ renderInput(){
       return (
         <div>
           <input type="password" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange}/>
-          {component}
+            {component}
         </div>
       );
     else
