@@ -3,7 +3,7 @@ React component to manage password input. Show/Hide, strength and auto-generate 
 
 - Use and Setup
 
-npm install react-component-password --save
+  npm install react-component-password --save
 
 - Features
 
