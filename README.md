@@ -3,6 +3,8 @@ React component to manage password input. Show/Hide, strength and auto-generate 
 
 - Use and Setup
 
+npm install react-component-password --save
+
 - Features
 
   You can use by props:
@@ -15,4 +17,6 @@ React component to manage password input. Show/Hide, strength and auto-generate 
 
   Also, you will see the strength of the password. This strength is calculate with zxcvbn library  
 
-- Examples
+- Example
+
+  < Password show={true} value=“12345678” numbers=“true”/>
