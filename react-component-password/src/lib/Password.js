@@ -45,7 +45,7 @@ class Password extends Component {
 
 
 renderInput(){
-  const { show} =this.props;
+  const { show,className} =this.props;
   var component;
 
   const res=zxcvbn(this.state.password);
@@ -71,14 +71,14 @@ renderInput(){
     if (!show)
       return (
         <div>
-          <input type="password" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange}/>
+          <input type="password" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange} className={className}/>
             {component}
         </div>
       );
     else
       return (
         <div>
-        <input type="text" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange}/>
+        <input type="text" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange} className={className}/>
         {component}
       </div>
     );

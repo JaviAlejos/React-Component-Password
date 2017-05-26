@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Demo.css';
-import Password from './components/Password';
+import Password from './lib/Password';
 
 class Demo extends Component {
   render() {
