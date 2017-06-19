@@ -9,11 +9,11 @@ module.exports={
      modules: [__dirname, 'node_modules']
   },
 
-  entry:['/Users/javieralejos/React-Component-Password/build/AppPassword.js'], //entrada de la aplicación
+  entry:['/Users/javieralejos/Github/React-Component-Password/React-Component-Password/build/AppPassword.js'], //entrada de la aplicación
 
   output:{ //salida de la app
     filename:'AppPassword.js',
-    path:'/Users/javieralejos/React-Component-Password/lib', //ruta donde va a estar el fichero final
+    path:'/Users/javieralejos/Github/React-Component-Password/React-Component-Password/lib', //ruta donde va a estar el fichero final
     publicPath:'/' //para el caso de utilizar un servidor de desarrollo
   },
 
