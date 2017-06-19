@@ -1,7 +1,7 @@
 # React-Component-Password
 React component to manage password input. Show/Hide, strength and auto-generate passwords
 
-- Use and Setup
+- Install
 
 npm install react-component-password --save
 
@@ -17,4 +17,8 @@ npm install react-component-password --save
 
   Also, you will see the strength of the password. This strength is calculate with zxcvbn library  
 
-- Example:  < Password show={true} value=“12345678” numbers=“true”/>
+- Example:
+
+    import AppPassword from 'react-component-password';
+
+    < AppPassword show={true} value=“12345678” numbers=“true”/>

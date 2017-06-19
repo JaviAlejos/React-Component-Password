@@ -1,11 +1,13 @@
+'use strict';
+
 import React, { Component } from 'react';
 import zxcvbn from "zxcvbn";
 import generator from "generate-password";
 import {Glyphicon,OverlayTrigger,Popover,Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/App.css';
+import './css/components/AppPassword.css';
 
-class Password extends Component {
+export default class AppPassword extends Component {
 
   constructor(props) {
     super(props);
@@ -19,8 +21,10 @@ class Password extends Component {
 
   }
 
-  handlePassChange = (event) => {
+  handlePassChange(event) {
     this.setState({ password: event.target.value });
+    if (this.props.handleFieldChange!=undefined)
+      this.props.handleFieldChange(event.target.value);
   };
 
   generatePassword(){
@@ -31,8 +35,9 @@ class Password extends Component {
       uppercase="true";
 
     const pass=generator.generate({ length,numbers,symbols,uppercase });
-  debugger;
     this.setState({password:pass});
+    if (this.props.handleFieldChange!=undefined)
+      this.props.handleFieldChange(pass);
   }
 
   popoverGeneratePassword(){
@@ -46,6 +51,7 @@ class Password extends Component {
 
 renderInput(){
   const { show,className} =this.props;
+  const popover=this.popoverGeneratePassword();
   var component;
 
   const res=zxcvbn(this.state.password);
@@ -54,12 +60,12 @@ renderInput(){
   switch (score) {
     case 0:
     case 1:
-        component= <Glyphicon className="StandardComponent GlyphiconDanger" glyph="glyphicon glyphicon-remove" />; break;
+        component= <Glyphicon className="StandardComponent GlyphiconDanger" glyph="glyphicon glyphicon-remove"/>; break;
       case 2:
-        component= <Glyphicon className="StandardComponent GlyphiconWarning" glyph="glyphicon glyphicon-warning-sign" />; break;
+        component= <Glyphicon className="StandardComponent GlyphiconWarning" glyph="glyphicon glyphicon-warning-sign"/>; break;
       case 3:
       case 4:
-        component= <Glyphicon className="StandardComponent GlyphiconOk" glyph="glyphicon glyphicon-ok" />;break;
+        component= <Glyphicon className="StandardComponent GlyphiconOk"   glyph="glyphicon glyphicon-ok"/>;break;
     }
 
     let placeholder=""
@@ -70,30 +76,31 @@ renderInput(){
 
     if (!show)
       return (
-        <div>
+        <span>
           <input type="password" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange} className={className}/>
+          <OverlayTrigger delayHide={700} placement="bottom" overlay={popover}>
             {component}
-        </div>
+          </OverlayTrigger>
+        </span>
       );
     else
       return (
-        <div>
+        <span>
         <input type="text" placeholder={placeholder} value={this.state.password} onChange={this.handlePassChange} className={className}/>
-        {component}
-      </div>
+          <OverlayTrigger delayHide={700} placement="bottom" overlay={popover}>
+            {component}
+        </OverlayTrigger>
+      </span>
     );
   }
 
-  render() {
-    const popover=this.popoverGeneratePassword();
+render() {
     return (
-      <div>
-        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-          {this.renderInput()}
-        </OverlayTrigger>
-      </div>
+
+      <span>
+        {this.renderInput()}
+      </span>
+
     );
   }
 }
-
-export default Password;
