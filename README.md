@@ -19,4 +19,6 @@ React component to manage password input. Show/Hide, strength and auto-generate 
 
 - Example
 
-  < Password show={true} value=“12345678” numbers=“true”/>
+      import AppPassword from 'react-component-password'
+                             ...
+      <AppPassword show={true} value=“12345678” numbers=“true”/>
